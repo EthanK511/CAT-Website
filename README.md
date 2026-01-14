@@ -1,10 +1,10 @@
-# CAT - Clement Action Team Website
+# CAT - Climate Action Team Website
 
 A professional website for the Climate Action Team, a high school-based environmental club managing a $10,000 Portland Green Energy Fund grant.
 
 ## About
 
-The Clement Action Team (CAT) is dedicated to environmental education and community engagement through monthly initiatives including youth education, community outreach, farm visits, and sustainable transportation programs.
+The Climate Action Team (CAT) is dedicated to environmental education and community engagement through monthly initiatives including youth education, community outreach, farm visits, and sustainable transportation programs.
 
 ## Features
 
