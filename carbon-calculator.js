@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (transportation > 2) {
             tips.push({
                 icon: '🚗',
-                title: 'Drive More Efficiently',
+                title: 'Travel More Efficiently',
                 text: 'Maintain proper tire pressure, avoid rapid acceleration, and consider a more fuel-efficient or electric vehicle.'
             });
         }
