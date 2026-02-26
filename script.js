@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (i < fullText.length) {
                 heroTitle.insertBefore(document.createTextNode(fullText[i]), cursor);
                 i++;
-                // Start grant counter once ~80% of the title has been typed
-                if (!counterStarted && i >= Math.floor(fullText.length * 0.8)) {
+                // Start grant counter once ~90% of the title has been typed
+                if (!counterStarted && i >= Math.floor(fullText.length * 0.9)) {
                     counterStarted = true;
                     startGrantCounter();
                 }
