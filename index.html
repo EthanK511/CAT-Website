@@ -10,10 +10,9 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <h1>CAT</h1>
-                <span class="logo-subtitle">Climate Action Team</span>
-            </div>
+            <a href="index.html" class="logo">
+                <img src="Cat Logo.png" alt="Climate Action Team" class="logo-img">
+            </a>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -24,8 +23,14 @@
     </nav>
 
     <section class="hero">
+        <!-- Animated background blobs contained to hero -->
+        <div class="hero-bg">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="hero-blob hero-blob-3"></div>
+        </div>
         <div class="hero-content">
-            <h1 class="hero-title">Climate Action Team</h1>
+            <h1 class="hero-title" id="heroTitle">Climate Action Team</h1>
             <p class="hero-subtitle">Student-Led, Grant-Funded Monthly Events for Portland's Green Future</p>
             <p class="hero-description">High school students managing impactful environmental programs every month</p>
             <div class="hero-buttons">
@@ -44,8 +49,8 @@
 
     <section class="highlights">
         <div class="container">
-            <h2>Student-Led Monthly Programs</h2>
-            <p class="section-subtitle">High school grant recipients organizing community impact events every month</p>
+            <h2 class="reveal">Student-Led Monthly Programs</h2>
+            <p class="section-subtitle reveal">High school grant recipients organizing community impact events every month</p>
             <div class="highlights-grid">
                 <div class="highlight-card highlight-card--clickable" id="youthEducationCard" role="button" tabindex="0" aria-haspopup="dialog">
                     <div class="highlight-icon">📚</div>

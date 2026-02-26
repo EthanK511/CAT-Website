@@ -1,5 +1,53 @@
 // Timeline animation on scroll
 document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Navbar scroll shadow ---
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
+        }, { passive: true });
+    }
+
+    // --- Typewriter effect for hero title ---
+    const heroTitle = document.getElementById('heroTitle');
+    if (heroTitle) {
+        const fullText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        const cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        heroTitle.appendChild(cursor);
+
+        let i = 0;
+        function typeNext() {
+            if (i < fullText.length) {
+                heroTitle.insertBefore(document.createTextNode(fullText[i]), cursor);
+                i++;
+                setTimeout(typeNext, 55);
+            } else {
+                // Remove cursor after typing finishes (with a short pause)
+                setTimeout(() => cursor.remove(), 1200);
+            }
+        }
+        setTimeout(typeNext, 300);
+    }
+
+    // --- Scroll-reveal for highlight cards ---
+    // Cards use CSS animation directly (cardFadeIn keyframes with staggered delays)
+    // so no JS observer is needed for them
+
+    // --- Generic reveal for section headings ---
+    const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
     // Youth Education card modal
     const youthCard = document.getElementById('youthEducationCard');
     const modal = document.getElementById('youthEducationModal');
