@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.animation = 'none';
             // Force reflow to restart animation
             void this.offsetWidth;
-            this.style.animation = 'catWiggle 0.9s ease-in-out';
+            this.style.animation = 'catWiggle 1.2s ease-in-out';
         });
     }
 
@@ -30,10 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
         heroTitle.appendChild(cursor);
 
         let i = 0;
+        let counterStarted = false;
         function typeNext() {
             if (i < fullText.length) {
                 heroTitle.insertBefore(document.createTextNode(fullText[i]), cursor);
                 i++;
+                // Start grant counter once ~80% of the title has been typed
+                if (!counterStarted && i >= Math.floor(fullText.length * 0.8)) {
+                    counterStarted = true;
+                    startGrantCounter();
+                }
                 setTimeout(typeNext, 55);
             } else {
                 // Remove cursor after typing finishes (with a short pause)
@@ -41,14 +47,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         setTimeout(typeNext, 300);
+    } else {
+        // No typewriter on this page — start counter immediately if present
+        startGrantCounter();
     }
 
-    // --- Grant counter animation ---
-    const grantCounter = document.getElementById('grantCounter');
-    if (grantCounter) {
+    // --- Grant counter animation (started by typewriter when almost done) ---
+    function startGrantCounter() {
+        const grantCounter = document.getElementById('grantCounter');
+        if (!grantCounter) return;
         let start = 0;
         const end = 10000;
-        const duration = 1600;
+        const duration = 2240; // 40% slower than original 1600 ms
         const step = end / (duration / 16);
         const timer = setInterval(function() {
             start = Math.min(start + step, end);
@@ -74,15 +84,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastMouse = { x: -999, y: -999 };
 
     window.addEventListener('mousemove', function(e) {
-        if (Math.hypot(e.clientX - lastMouse.x, e.clientY - lastMouse.y) > 12) {
+        if (Math.hypot(e.clientX - lastMouse.x, e.clientY - lastMouse.y) > 20) {
             lastMouse = { x: e.clientX, y: e.clientY };
             particles.push({
                 x: e.clientX,
                 y: e.clientY,
                 r: Math.random() * 4 + 2,
-                alpha: 0.7,
-                dx: (Math.random() - 0.5) * 1.2,
-                dy: -Math.random() * 1.5 - 0.5,
+                alpha: 0.6,
+                dx: (Math.random() - 0.5) * 0.6,
+                dy: -Math.random() * 0.8 - 0.25,
                 color: Math.random() > 0.5 ? '45,106,79' : '82,183,136'
             });
         }
@@ -94,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const p = particles[i];
             p.x += p.dx;
             p.y += p.dy;
-            p.alpha -= 0.025;
+            p.alpha -= 0.015;
             if (p.alpha <= 0) { particles.splice(i, 1); continue; }
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);

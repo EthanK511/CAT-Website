@@ -66,11 +66,7 @@ body {
 
 @keyframes catWiggle {
     0%   { transform: rotate(0deg); }
-    20%  { transform: rotate(-18deg); }
-    45%  { transform: rotate(0deg); }
-    65%  { transform: rotate(14deg); }
-    82%  { transform: rotate(0deg); }
-    91%  { transform: rotate(-7deg); }
+    45%  { transform: rotate(-18deg); }
     100% { transform: rotate(0deg); }
 }
 
