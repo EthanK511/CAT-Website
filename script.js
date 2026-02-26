@@ -9,6 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { passive: true });
     }
 
+    // --- Logo cat wiggle on hover (replays animation) ---
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg) {
+        logoImg.addEventListener('mouseenter', function() {
+            this.style.animation = 'none';
+            // Force reflow to restart animation
+            void this.offsetWidth;
+            this.style.animation = 'catWiggle 0.9s ease-in-out';
+        });
+    }
+
     // --- Typewriter effect for hero title ---
     const heroTitle = document.getElementById('heroTitle');
     if (heroTitle) {
@@ -31,6 +42,68 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         setTimeout(typeNext, 300);
     }
+
+    // --- Grant counter animation ---
+    const grantCounter = document.getElementById('grantCounter');
+    if (grantCounter) {
+        let start = 0;
+        const end = 10000;
+        const duration = 1600;
+        const step = end / (duration / 16);
+        const timer = setInterval(function() {
+            start = Math.min(start + step, end);
+            grantCounter.textContent = '$' + Math.floor(start).toLocaleString() + ' Grant';
+            if (start >= end) clearInterval(timer);
+        }, 16);
+    }
+
+    // --- Mouse particle trail (subtle green dots) ---
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+
+    const particles = [];
+    let lastMouse = { x: -999, y: -999 };
+
+    window.addEventListener('mousemove', function(e) {
+        if (Math.hypot(e.clientX - lastMouse.x, e.clientY - lastMouse.y) > 12) {
+            lastMouse = { x: e.clientX, y: e.clientY };
+            particles.push({
+                x: e.clientX,
+                y: e.clientY,
+                r: Math.random() * 4 + 2,
+                alpha: 0.7,
+                dx: (Math.random() - 0.5) * 1.2,
+                dy: -Math.random() * 1.5 - 0.5,
+                color: Math.random() > 0.5 ? '45,106,79' : '82,183,136'
+            });
+        }
+    }, { passive: true });
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x += p.dx;
+            p.y += p.dy;
+            p.alpha -= 0.025;
+            if (p.alpha <= 0) { particles.splice(i, 1); continue; }
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
+            ctx.fill();
+        }
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
 
     // --- Scroll-reveal for highlight cards ---
     // Cards use CSS animation directly (cardFadeIn keyframes with staggered delays)
