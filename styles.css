@@ -2249,9 +2249,10 @@ footer {
     .q-cards-grid.g-3  { grid-template-columns: repeat(2, 1fr); }
     .comparison-cards-grid { grid-template-columns: repeat(2, 1fr); }
     .result-total-number { font-size: 4rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .modal {
         animation: none;
     }
-}
 }
