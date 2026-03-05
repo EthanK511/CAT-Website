@@ -115,5 +115,72 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Cookies Consent Banner -->
+    <div class="cookies-banner" id="cookiesBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+        <div class="cookies-banner-inner">
+            <div class="cookies-banner-text">
+                <span class="cookies-icon">🍪</span>
+                <div>
+                    <strong>This page uses cookies to load the sign-up form.</strong>
+                    <p>Please enable cookies for the best experience.</p>
+                </div>
+            </div>
+            <div class="cookies-banner-actions">
+                <button class="btn btn-primary cookies-accept" id="cookiesAccept">Accept</button>
+                <button class="btn cookies-decline" id="cookiesDecline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var banner = document.getElementById('cookiesBanner');
+        var acceptBtn = document.getElementById('cookiesAccept');
+        var declineBtn = document.getElementById('cookiesDecline');
+
+        function getConsent() {
+            try {
+                return localStorage.getItem('cat-cookies-consent');
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function setConsent(value) {
+            try {
+                localStorage.setItem('cat-cookies-consent', value);
+            } catch (e) {
+                // Storage unavailable (e.g. private browsing); proceed silently
+            }
+        }
+
+        // Only show if no previous choice stored
+        if (!getConsent()) {
+            // Slight delay so the slide-up animation is visible after page load
+            setTimeout(function() {
+                banner.classList.add('is-visible');
+            }, 600);
+        }
+
+        function dismissBanner(choice) {
+            setConsent(choice);
+            banner.classList.add('is-hiding');
+            banner.classList.remove('is-visible');
+            // Remove from DOM after animation completes
+            setTimeout(function() {
+                banner.style.display = 'none';
+            }, 450);
+        }
+
+        acceptBtn.addEventListener('click', function() {
+            dismissBanner('accepted');
+        });
+
+        declineBtn.addEventListener('click', function() {
+            dismissBanner('declined');
+        });
+    })();
+    </script>
 </body>
 </html>

@@ -2488,3 +2488,123 @@ footer {
         display: flex;
     }
 }
+
+/* =========================================================
+   COOKIES CONSENT BANNER
+   ========================================================= */
+
+.cookies-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 -4px 30px rgba(45, 106, 79, 0.15);
+    border-top: 3px solid var(--accent-color);
+    z-index: 3000;
+    padding: 1.25rem 2rem;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    opacity: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cookies-banner.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cookies-banner.is-hiding {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.cookies-banner-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.cookies-banner-text {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 260px;
+}
+
+.cookies-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.cookies-banner-text strong {
+    display: block;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.cookies-banner-text p {
+    color: var(--text-light);
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.cookies-banner-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.cookies-accept {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.cookies-decline {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.95rem;
+    background: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cookies-decline:hover {
+    border-color: var(--text-light);
+    color: var(--text-dark);
+}
+
+@media (max-width: 600px) {
+    .cookies-banner {
+        padding: 1rem;
+    }
+
+    .cookies-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .cookies-banner-actions {
+        width: 100%;
+    }
+
+    .cookies-accept,
+    .cookies-decline {
+        flex: 1;
+        text-align: center;
+    }
+}
