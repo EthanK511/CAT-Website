@@ -186,6 +186,28 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(item);
     });
 
+    // --- Hamburger / side menu ---
+    const hamburger = document.getElementById('hamburger');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('sideMenuOverlay');
+    const closeBtn = document.getElementById('sideMenuClose');
+
+    if (hamburger) {
+        function openMenu() {
+            sideMenu.classList.add('open');
+            overlay.classList.add('open');
+            document.body.classList.add('modal-open');
+        }
+        function closeMenu() {
+            sideMenu.classList.remove('open');
+            overlay.classList.remove('open');
+            document.body.classList.remove('modal-open');
+        }
+        hamburger.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+    }
+
     // Form handling
     const signupForm = document.getElementById('signupForm');
     if (signupForm) {
