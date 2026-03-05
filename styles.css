@@ -238,6 +238,9 @@ body {
 }
 
 .floating-card {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     padding: 3rem;
     border-radius: 28px;
@@ -1856,7 +1859,7 @@ footer {
 /* Chrome/Safari spinner removal */
 .q-number-input::-webkit-outer-spin-button,
 .q-number-input::-webkit-inner-spin-button { -webkit-appearance: none; }
-.q-number-input[type=number] { -moz-appearance: textfield; }
+.q-number-input[type=number] { appearance: textfield; -moz-appearance: textfield; }
 
 .q-number-unit {
     font-size: 1rem;
@@ -2249,4 +2252,5 @@ footer {
     .modal {
         animation: none;
     }
+}
 }
