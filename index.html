@@ -13,6 +13,12 @@
             <a href="index.html" class="logo">
                 <img src="Cat Logo.png" alt="Climate Action Team" class="logo-img">
             </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="carbon-calculator.html">Carbon Calculator</a></li>
+                <li><a href="signup.html">Community Night Sign-Up</a></li>
+            </ul>
             <button class="hamburger" id="hamburger" aria-label="Open menu">
                 <span></span>
                 <span></span>
@@ -29,7 +35,7 @@
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="carbon-calculator.html">Carbon Calculator</a></li>
-            <li><a href="https://forms.gle/EPzCBZUhoK7nWFWM9">Community Night Sign-Up</a></li>
+            <li><a href="signup.html">Community Night Sign-Up</a></li>
         </ul>
     </div>
 
@@ -152,27 +158,5 @@
         </div>
     </div>
     <script src="script.js"></script>
-    <script>
-    const hamburger = document.getElementById('hamburger');
-    const sideMenu = document.getElementById('sideMenu');
-    const overlay = document.getElementById('sideMenuOverlay');
-    const closeBtn = document.getElementById('sideMenuClose');
-
-    function openMenu() {
-        sideMenu.classList.add('open');
-        overlay.classList.add('open');
-        document.body.classList.add('modal-open');
-    }
-
-    function closeMenu() {
-        sideMenu.classList.remove('open');
-        overlay.classList.remove('open');
-        document.body.classList.remove('modal-open');
-    }
-
-    hamburger.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
-</script>
 </body>
 </html>

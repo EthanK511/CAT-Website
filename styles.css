@@ -823,6 +823,22 @@ body {
     padding: 5rem 0;
 }
 
+.form-embed-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px var(--shadow);
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.form-embed-container iframe {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
 .form-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -1421,22 +1437,6 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .form-embed-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 30px var(--shadow);
-    overflow: hidden;
-    padding: 1rem;
-    }
-
-    .form-embed-container iframe {
-    display: block;
-    width: 100%;
-    border: none;
-    }
-
     .nav-menu {
         gap: 1rem;
         font-size: 0.9rem;
@@ -1481,16 +1481,7 @@ footer {
     }
 
     .nav-container {
-        flex-direction: column;
-        gap: 0.5rem;
         padding: 0.75rem 1rem;
-    }
-
-    .nav-menu {
-        gap: 0.75rem;
-        font-size: 0.85rem;
-        flex-wrap: wrap;
-        justify-content: center;
     }
 
     .signup-form {
@@ -2423,15 +2414,15 @@ footer {
     color: var(--primary-color);
 }
 
-/* On desktop: show normal nav, hide hamburger */
+/* On desktop: hide hamburger */
 .hamburger {
     display: none;
 }
 
-/* On mobile: hide normal nav, show hamburger */
-@media (max-width: 768px) {
+/* On mobile (≤600px): hide nav links, show hamburger */
+@media (max-width: 600px) {
     .nav-menu {
-        display: none;
+        display: none !important;
     }
 
     .hamburger {
