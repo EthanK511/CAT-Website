@@ -2306,3 +2306,106 @@ footer {
         animation: none;
     }
 }
+
+/* =========================================================
+   HAMBURGER + SIDE MENU
+   ========================================================= */
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--primary-dark);
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.side-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1500;
+    backdrop-filter: blur(2px);
+}
+
+.side-menu-overlay.open {
+    display: block;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 260px;
+    height: 100%;
+    background: white;
+    box-shadow: -4px 0 30px rgba(0, 0, 0, 0.15);
+    z-index: 1600;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+.side-menu-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-light);
+    line-height: 1;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+}
+
+.side-menu-close:hover {
+    color: var(--primary-color);
+}
+
+.side-menu-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.side-menu-links a {
+    display: block;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.side-menu-links a:hover,
+.side-menu-links a.active {
+    background: var(--background-light);
+    color: var(--primary-color);
+}
+
+/* Hide old inline nav menu, always show hamburger */
+.nav-menu {
+    display: none;
+}
