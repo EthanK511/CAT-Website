@@ -2405,7 +2405,18 @@ footer {
     color: var(--primary-color);
 }
 
-/* Hide old inline nav menu, always show hamburger */
-.nav-menu {
+/* On desktop: show normal nav, hide hamburger */
+.hamburger {
     display: none;
+}
+
+/* On mobile: hide normal nav, show hamburger */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
 }
