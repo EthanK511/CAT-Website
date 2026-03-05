@@ -839,6 +839,13 @@ body {
     border: none;
 }
 
+.form-fallback {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
 .form-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
