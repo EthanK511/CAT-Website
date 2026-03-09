@@ -36,12 +36,24 @@ Then open your browser to `http://localhost:8000`
 ## Project Structure
 
 ```
-├── index.html      # Home page
-├── about.html      # About Us with animated timeline
-├── signup.html     # Community Night registration form
-├── styles.css      # All styling and animations
-├── script.js       # Form validation and interactions
-└── README.md       # This file
+├── assets/
+│   ├── css/
+│   │   └── styles.css              # All styling and animations
+│   ├── js/
+│   │   ├── script.js               # Navigation and shared interactions
+│   │   └── carbon-calculator.js    # Carbon footprint calculator logic
+│   └── images/
+│       ├── Cat Logo.png            # Site logo
+│       ├── og-image.png            # Open Graph / social share image
+│       └── favicon.svg             # Browser favicon
+├── index.html                      # Home page
+├── about.html                      # About Us with animated timeline
+├── carbon-calculator.html          # Carbon footprint calculator
+├── signup.html                     # Community Night registration form
+├── robots.txt                      # Search engine crawl rules
+├── sitemap.xml                     # XML sitemap
+├── CNAME                           # Custom domain config
+└── README.md                       # This file
 ```
 
 ---
