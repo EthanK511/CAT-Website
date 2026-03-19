@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'carMileage', cat: 'transport', type: 'number',
             q: "What is your car's fuel efficiency?",
             unit: 'MPG', placeholder: '28', min: 1, def: 28,
-            hint: "US average is ~28 MPG. Leave at default if you don't drive.",
+            hint: "US average is ~28 MPG. Leave at default if you don't drive. If you drive an electric car put 120",
         },
         {
             id: 'numVehicles', cat: 'transport', type: 'cards',
