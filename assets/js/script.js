@@ -166,6 +166,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Community Outreach card modal
+    const communityOutreachCard = document.getElementById('communityOutreachCard');
+    const communityOutreachModal = document.getElementById('communityOutreachModal');
+    const communityOutreachModalClose = document.getElementById('communityOutreachModalClose');
+
+    if (communityOutreachCard && communityOutreachModal) {
+        function openCommunityOutreachModal() {
+            communityOutreachModal.classList.add('is-open');
+            document.body.classList.add('modal-open');
+            communityOutreachModalClose.focus();
+        }
+
+        function closeCommunityOutreachModal() {
+            communityOutreachModal.classList.remove('is-open');
+            document.body.classList.remove('modal-open');
+            communityOutreachCard.focus();
+        }
+
+        communityOutreachCard.addEventListener('click', openCommunityOutreachModal);
+        communityOutreachCard.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openCommunityOutreachModal();
+            }
+        });
+
+        communityOutreachModalClose.addEventListener('click', closeCommunityOutreachModal);
+        communityOutreachModal.addEventListener('click', function(e) {
+            if (e.target === communityOutreachModal) closeCommunityOutreachModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && communityOutreachModal.classList.contains('is-open')) closeCommunityOutreachModal();
+        });
+    }
+
     // Animate timeline items on scroll
     const observerOptions = {
         threshold: 0.2,
