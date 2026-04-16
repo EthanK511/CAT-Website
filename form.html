@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting...</title>
+    <meta name="description" content="GHS Hack Club Website Boba"/>
+    <meta http-equiv="refresh" content="5;url=https://docs.google.com/forms/u/1/d/e/1FAIpQLSfLzoGLXR5uP3B43twp4yzP_qlzc4Mh_AAx3LXLvBV3kYfe6Q/viewform"/>
+    <link rel="icon" type="image/x-icon" href="/GHS_HC_LOGO.png">
+
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        background: #f9fafc;
+        color: #1f2d3d;
+      }
+
+      main {
+        width: min(680px, calc(100% - 2rem));
+        padding: 1.25rem;
+        border: 1px solid #e0e6ed;
+        border-radius: 12px;
+        background: #fff;
+      }
+
+      code {
+        background: #f3f6fa;
+        padding: 0.15rem 0.35rem;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>Redirecting...</h1>
+      <p>If you are not redirected automatically, use the link below.</p>
+      <p><a id="redirect-link" href="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfLzoGLXR5uP3B43twp4yzP_qlzc4Mh_AAx3LXLvBV3kYfe6Q/viewform">Go to destination</a></p>
+    </main>
+
+    <script>
+      const TARGET_URL = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfLzoGLXR5uP3B43twp4yzP_qlzc4Mh_AAx3LXLvBV3kYfe6Q/viewform";
+
+      const link = document.getElementById("redirect-link");
+      link.href = TARGET_URL;
+
+      window.location.replace(TARGET_URL);
+    </script>
+  </body>
+</html>
